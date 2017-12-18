@@ -91,14 +91,13 @@ class MapImageEngine extends PluginBase implements Listener {
 	private function registerItems() {
 		try {
 			if (class_exists(ItemFactory::class)) {
-				$class = ItemFactory::class;
+				$class=ItemFactory::class;
 			} else {
 				throw \Exception;
 			}
 		} catch (\Throwable $e) {
 			$class = Item::class;
 		}
-		
 		if (method_exists($class, 'registerItem')) {
 			$class::registerItem(new FilledMapItem, true);
 		} else {
